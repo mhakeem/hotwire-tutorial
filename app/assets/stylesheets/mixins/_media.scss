@@ -1,0 +1,14 @@
+// the bottom media query will be used as shown in the example below
+// .my-component {
+//   // The CSS for mobile
+
+//   @include media(tabletAndUp) {
+//     // The CSS for screens bigger than tablets
+//   }
+// }
+
+@mixin media($query) {
+  @if $query == tabletAndUp {
+    @media (min-width: 50rem) { @content; }
+  }
+}
