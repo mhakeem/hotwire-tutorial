@@ -1,7 +1,16 @@
 <main class="container">
   <%= link_to sanitize("&larr; Back to quotes"), quotes_path %>
+
   <div class="header">
     <h1>New quote</h1>
   </div>
-  <%= render "form", quote: @quote %>
+
+  <!-- this turbo frame tag is for new quotes. The follwing codes do the same thing:
+        turbo_frame_tag "new_quote"
+        turbo_frame_tag Quote.new
+        turbo_frame_tag @quote
+  -->
+  <%= turbo_frame_tag @quote do %>
+    <%= render "form", quote: @quote %>
+  <% end %>
 </main>

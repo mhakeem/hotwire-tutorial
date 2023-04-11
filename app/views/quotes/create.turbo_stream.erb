@@ -1,0 +1,16 @@
+<%#= turbo_stream.prepend "quotes", partial: "quotes/quote", locals: { quote: @quote } %>
+<!-- another way of writing the above code:
+
+  <%= turbo_stream.prepend "quotes" do %>
+    <%= render partial: "quotes/quote", locals: { quote: @quote } %>
+  <% end %>
+-->
+
+<!-- the shortest syntax for the above two lines -->
+<%= turbo_stream.prepend "quotes", @quote %>
+<%= turbo_stream.update Quote.new, "" %>
+
+<!-- the above expressions are equivalent to the following in Rails:
+      render partial: "quotes/quote", locals: { quote: @quote }
+      render @quote
+-->
