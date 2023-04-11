@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # @return [Company]
   def current_company
     @current_company ||= current_user.company if user_signed_in?
   end
