@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: line_item_dates
@@ -19,6 +21,8 @@
 #  fk_rails_...  (quote_id => quotes.id)
 #
 class LineItemDate < ApplicationRecord
+  has_many :line_items, dependent: :destroy
+
   belongs_to :quote
 
   validates :date, presence: true, uniqueness: { scope: :quote_id }
