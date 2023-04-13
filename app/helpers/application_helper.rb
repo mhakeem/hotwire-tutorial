@@ -10,4 +10,9 @@ module ApplicationHelper
       object.errors.full_messages.to_sentence.capitalize
     end
   end
+
+  # This is to simplify `dom_id(LineItem.new, dom_id(line_item_date))`
+  def nested_dom_id(*args)
+    args.map { |arg| arg.respond_to?(:to_key) ? dom_id(arg) : arg }.join('_')
+  end
 end
